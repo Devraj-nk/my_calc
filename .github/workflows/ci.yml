@@ -54,6 +54,12 @@ jobs:
 
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/src" >> $GITHUB_ENV
+      
+      - name: Verify calculator module
+        run: |
+          echo $PYTHONPATH
+          ls -R src/
+          python -c "from src.calculator import divide; print(divide(1,1))"
 
       - name: Unit Tests with Coverage 
         run: | 
