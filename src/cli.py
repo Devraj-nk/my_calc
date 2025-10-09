@@ -25,7 +25,15 @@ def calculate(operation, num1, num2=None):
             result = square_root(num1) 
         else: 
             click.echo(f"Unknown operation: {operation}") 
-            sys.exit(1)
+            sys.exit(1) 
+
+    except ValueError as e:
+        click.echo(f"Error: {e}")
+        sys.exit(1)
+    except Exception as e:
+        click.echo(f"Unexpected error: {e}")
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     calculate()
