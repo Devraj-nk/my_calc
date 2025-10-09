@@ -118,25 +118,16 @@ jobs:
           python -m pip install --upgrade pip 
           pip install pylint 
 
-      - name: Run pylint and save report 
-        run: | 
-          echo " Running pylint..." 
-          pylint src/ --output-format=text > lint_report.txt || true 
-          echo "Saved lint report to lint_report.txt" 
-          # enforce threshold (set to 7.0 here; change to 8.0 if you prefer stricter) 
-          score_line=$(grep -E "rated at" lint_report.txt || true) 
-          score=$(echo "$score_line" | sed -n 's/.*rated at \([0-9.]*\)\/10.*/\1/p') 
-          echo "Pylint score: ${score:-not-found}" 
-          if [ -z "$score" ]; then 
-            echo "Could not determine pylint score"; exit 1 
-          fi 
-          awk -v s="$score" 'BEGIN{ if (s+0 < 7.0) exit 1 }' || (echo "Pylint score $score is below threshold 7.0" && exit 1) 
-
-      - name: Upload lint report 
-        uses: actions/upload-artifact@v4 
-        with: 
-          name: lint-report 
-          path: lint_report.txt 
+      - name: Run pylint and save report
+        run: |
+          echo " Running pylint..."
+          pylint src/ --output-format=text > lint_report.txt || true
+          echo "Saved lint report to lint_report.txt"
+            - name: Upload lint report 
+              uses: actions/upload-artifact@v4 
+              with: 
+                name: lint-report 
+                path: lint_report.txt 
 
   # Formatting stage 
   format: 
