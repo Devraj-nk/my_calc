@@ -2,12 +2,10 @@ from click.testing import CliRunner
 import pytest 
  
 class TestCLIIntegration: 
-    """Test CLI application integrating with 
-calculator module (in-process)""" 
+    """Test CLI application integrating with calculator module (in-process)""" 
  
     def run_cli(self, *args): 
-        """Invoke Click CLI in-process so coverage is 
-measured.""" 
+        """Invoke Click CLI in-process so coverage is measured.""" 
         from src.cli import calculate 
  
         runner = CliRunner() 
@@ -44,12 +42,10 @@ measured."""
         assert "Unknown operation" in res.output 
  
 class TestCalculatorModuleIntegration: 
-    """Test calculator module functions work 
-together""" 
+    """Test calculator module functions work together""" 
  
     def test_chained_operations(self): 
-        """Test using results from one operation in 
-another""" 
+        """Test using results from one operation in another""" 
         from src.calculator import add, multiply, divide 
  
         # Calculate (5 + 3) * 2 / 4 
