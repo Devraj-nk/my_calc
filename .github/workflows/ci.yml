@@ -77,7 +77,7 @@ jobs:
  
       - name: Run tests with coverage and generate HTML report 
         run: pytest tests/ --cov=src --cov-report=html 
- 
+
       - name: Upload coverage HTML 
         uses: actions/upload-artifact@v4 
         with: 
