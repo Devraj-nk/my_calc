@@ -5,7 +5,7 @@ Students will extend this with more functions
 
 
 def add(a, b):
-    """Add two numbers together"""
+    """Add two numbers together (for branch add-docstring-a)"""
     return a + b
 
 
